@@ -9,17 +9,11 @@ function App() {
 
   return (
     <>
-      <h2>Pokemon Index : {pokemonIndex + 1}</h2>
-
       <div>
         <PokemonCard pokemon={pokemonList[pokemonIndex]} />
       </div>
 
-      <NavBar
-        setIndex={setIndex}
-        pokemonIndex={pokemonIndex}
-        pokemonList={pokemonList}
-      />
+      <NavBar setIndex={setIndex} pokemonList={pokemonList} />
     </>
   );
 }
