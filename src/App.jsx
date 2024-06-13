@@ -1,38 +1,11 @@
 import { useState } from "react";
 import "./App.css";
 import PokemonCard from "./component/PokemonCard";
-
-const pokemonList = [
-  {
-    name: "bulbasaur",
-    imgSrc:
-      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png",
-  },
-  {
-    name: "charmander",
-    imgSrc:
-      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/4.png",
-  },
-  {
-    name: "squirtle",
-    imgSrc:
-      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/7.png",
-  },
-  {
-    name: "pikachu",
-    imgSrc:
-      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/25.png",
-  },
-  {
-    name: "mew",
-  },
-];
+import NavBar from "./component/NavBar";
+import pokemonList from "./utils/pokemonList";
 
 function App() {
   const [pokemonIndex, setIndex] = useState(0);
-
-  const HandleClickNegative = () => setIndex(pokemonIndex - 1);
-  const HandleClickPositive = () => setIndex(pokemonIndex + 1);
 
   return (
     <>
@@ -41,12 +14,12 @@ function App() {
       <div>
         <PokemonCard pokemon={pokemonList[pokemonIndex]} />
       </div>
-      {pokemonIndex > 0 ? (
-        <button onClick={HandleClickNegative}>Précedent</button>
-      ) : null}
-      {pokemonIndex < pokemonList.length - 1 ? (
-        <button onClick={HandleClickPositive}>Suivant</button>
-      ) : null}
+
+      <NavBar
+        setIndex={setIndex}
+        pokemonIndex={pokemonIndex}
+        pokemonList={pokemonList}
+      />
     </>
   );
 }
